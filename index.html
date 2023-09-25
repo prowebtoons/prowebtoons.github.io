@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html onmousedown="return true" ondragstart="return false" oncontextmenu="return false;">
+<head>
+    <title>.::[#]::.</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="expires" content="-1" />
+    <meta http-equiv="pragma" content="no-cache" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />  
+    <meta name="viewport" content="width=device-width; initial-scale=1; maximum-scale=1;" />
+    <link href=".static/img/images.png" rel="icon" type="image/x-icon" />
+    <meta name="description" content="Read Manhwa">
+    <meta name="chapter" content="001">
+
+    <!-- <meta http-equiv="refresh" content="1"> -->
+
+    <link rel="stylesheet" type="text/css" href=".static/css/style.css">
+</head>
+<body>
+    <section id="content" style="display: block;">
+        <div id="layer_1" style="display: none;">
+            <div class="inner">
+                <header>
+                    <h2 id="titleManhwa">???</h2>
+                    <hr />
+                </header>
+
+                <div id="blockChapterList"></div>
+            </div>
+        </div>
+
+        <div id="layer_2" style="display: none;">
+            <nav>
+                <table width="100%" border="0" cellpadding="0" cellspacing="0">
+                    <thead>
+                        <!-- <tr><th colspan="6"><h3 id="titlecManhwa">???</h2></th></tr> -->
+                        <tr>
+                            <th><p style="width: 5px;"></p></th>
+                            <th width="38"><div id="back_l2"><button class="fa fa-arrow-circle-left"></button></div></th>
+
+                            <th>
+                                <table id="_opt_chap" border="0" cellpadding="0" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th><i id="_prev_ch" class="fa fa-arrow-left disabled" style="margin-right:10px;"></i></th>
+                                            <th>
+                                                <select id="chapterList">
+                                                    <option style="color:rgb(40 180 20)" disabled selected>Select Chapter</option>
+                                                </select>
+                                            </th>
+                                            <th><i id="_next_ch" class="fa fa-arrow-right disabled" style="margin-left:10px;"></i></th>
+                                        </tr>
+                                    </thead>
+                                </table>
+                            </th>
+                            <th width="38">
+                                <div id="_bgm" style="display: none;">
+                                    <audio id="_audio"></audio>
+                                    <button id="_btn" class="fa fa-fw fa-off"></button>
+                                </div>
+                            </th>
+                            <th width="38">
+                                <div id="_up" onclick="if(scrollTimer){clearInterval(scrollTimer);scrollTimer=null;}window.scrollTo({top: 0, behavior: 'smooth'});"><button class="fa fa-arrow-circle-up"></button></div>
+                            </th>
+                            <th><p style="width: 5px;"></p></th>
+                        </tr>
+                    </thead>
+                </table>
+            </nav>
+            <div id="_down" style="display: none;"><button class="fa fa-arrow-circle-down"></button></div>
+
+            <center><ul id="imageList"></ul></center>
+        </div>
+    </section>
+
+
+    <script src=".static/js/jquery-3.4.1.min.js" type="text/javascript"></script>
+    <script src=".static/js/common-main.js" type="text/javascript"></script>
+    <script src=".static/js/base64.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        var app = {
+            manhwa: $_get('manhwa'),
+            epsInfo: null,
+            _prev_ch: null,
+            _next_ch: null,
+            cookie: {
+                userId : "_userId.bZBX1W-WJRVsvkBZU",
+                qwe: "_qwe.bZBX1W-WJRVsvkBZU",
+                _user_id : null,
+                _qwe: null
+            },
+            byteImgErr: null
+        };
+        app.cookie._user_id = getCookie(app.cookie.userId);
+        setCookie(app.cookie.userId, app.cookie._user_id, 30);
+        if (!app.cookie._user_id) {
+            setCookie(app.cookie.userId, genToken(36), 30);
+            app.cookie._user_id = getCookie(app.cookie.userId);
+        };
+        app.cookie._qwe = JSON.parse(getCookie(app.cookie.qwe)||'{}');
+        // if (!app.cookie._qwe) {app.cookie._qwe = {}};
+        // btoa()
+        // atob()
+
+        const __main__ = () => {
+            gid('titleManhwa').innerHTML = app.manhwa.replaceAll('-', ' ').toUpperCase();
+            if (gid('chaplist')) {
+                gid("blockChapterList").getElementsByClassName('major')[0].remove()
+                gid('chaplist').remove();
+            }
+            console.log(app.epsInfo);
+
+            var ul_alt = document.createElement('ul');
+            ul_alt.setAttribute('class', "alt bxcl");
+            ul_alt.setAttribute('id', "chaplist");
+            Object.keys(app.epsInfo).sort().forEach(eps => {
+                var span_chapternum = document.createElement('span');
+                span_chapternum.setAttribute('class', "chapternum");
+                span_chapternum.innerHTML = app.epsInfo[eps].episodeTitle;
+                if (eps == app.cookie._qwe[app.manhwa].last_view) {
+                    span_chapternum.classList.add('view');
+                }
+
+                var span_chapterdate = document.createElement('span');
+                span_chapterdate.setAttribute('class', "chapterdate");
+                span_chapterdate.innerHTML = app.epsInfo[eps].exposureYmdt/1000;
+
+                var a = document.createElement('a');
+                a.appendChild(span_chapternum);
+                a.appendChild(span_chapterdate);
+
+                var div_chbox = document.createElement('div');
+                div_chbox.setAttribute('class', "chbox");
+                if (app.cookie._qwe[app.manhwa].viewed[eps]) {
+                    div_chbox.classList.add('viewed');
+                }
+                div_chbox.setAttribute('onclick', "loadContents(\"{0}\");".format(eps));
+                div_chbox.setAttribute('onmouseover', "this.getElementsByTagName('span')[0].style = 'color:rgb(40, 220, 25);border-color:#333;border-bottom-color:rgb(40, 220, 25)'");
+                div_chbox.setAttribute('onmouseleave', "this.getElementsByTagName('span')[0].style = ''");
+                div_chbox.appendChild(a);
+
+                var li = document.createElement('li');
+                li.appendChild(div_chbox);
+                ul_alt.appendChild(li);
+            });
+
+            gid('blockChapterList').appendChild(ul_alt);
+            var hr_major = document.createElement('hr');
+            hr_major.setAttribute('class', "major");
+            gid('blockChapterList').appendChild(hr_major);
+
+            show('layer_1');
+        }
+
+        const loadContents = (episode) => {
+            // fetch('./.static/img/404.bin').then(response => response.text()).then(b => app.byteImgErr = b);
+            document.getElementsByName('viewport')[0].content = "width=device-width, initial-scale=1, maximum-scale=3";
+            const referer = (eps) => {
+                if (!app.cookie._qwe[app.manhwa].viewed[eps]) {
+                    app.cookie._qwe[app.manhwa].viewed[eps] = {
+                        thumb_img: 0,
+                        scrollY: 0
+                    }
+                }
+                app.cookie._qwe[app.manhwa].last_view = eps;
+                update_cookie();load_content(eps);
+            }
+            const load_content = (episode) => {
+                Array.from(gid("chapterList").getElementsByTagName('option')).slice(1).forEach(elem => {
+                    if (elem.value==episode) {elem.selected = true;}
+                });
+
+                app._prev_ch = (''+(episode-1)).padStart(3, '0');
+                app._next_ch = (''+(parseInt(app._prev_ch)+2)).padStart(3, '0');
+                if (Object.keys(app.epsInfo).indexOf(app._prev_ch) >= 0) {
+                    gid("_prev_ch").classList.remove('disabled');
+                    gid("_prev_ch").onclick = function() {referer(app._prev_ch)}
+                } else {gid("_prev_ch").classList.add('disabled');}
+                if (Object.keys(app.epsInfo).indexOf(app._next_ch)>=0) {
+                    gid("_next_ch").classList.remove('disabled');
+                    gid("_next_ch").onclick = function() {referer(app._next_ch)}
+                    gid("_down").onclick = function() {referer(app._next_ch)}
+                } else {
+                    gid("_next_ch").classList.add('disabled');
+                    gid("_down").onclick = null;
+                }
+
+                var imageList = gid('imageList').getElementsByTagName('li');
+                if (imageList.length) Array.from(imageList).forEach(elem => {elem.remove()});
+                for (i=0; i<app.epsInfo[episode].imageInfo.length; i++) {
+                    var sortOrder = app.epsInfo[episode].imageInfo[i].sortOrder
+                    var urli = app.epsInfo[episode].imageInfo[i].url
+
+                    var li_img = document.createElement('li');
+                    li_img.setAttribute('onclick', 'nav_up();');
+                    var img_ctn = document.createElement('img');
+                    img_ctn.setAttribute('data-sortOrder', "{0}".format(sortOrder));
+                    img_ctn.setAttribute('data-src', "{0}".format(urli));
+                    img_ctn.setAttribute('onerror', "onImgError(this);");
+                    img_ctn.setAttribute('oncontextmenu', "return false;");
+                    li_img.appendChild(img_ctn);
+                    gid('imageList').appendChild(li_img);
+                }
+                imageList = gid('imageList').getElementsByTagName('li');
+                var thumb_img = app.cookie._qwe[app.manhwa].viewed[episode].thumb_img;
+                Array.from(imageList).slice(0, (thumb_img+3||3)).forEach((elem, i) => {
+                    var imgTag = elem.getElementsByTagName('img')[0];
+                    var sortOrder = imgTag.getAttribute('data-sortOrder');
+                    var i = Array.from(imageList).indexOf(elem);
+                    var data_src = '{0}/{1}/{2}/{3}_{4}.jpg'.format(window.location.origin, app.manhwa, (episode+'').padStart(3, '0'), app.epsInfo[episode].episodeTitleHash, (sortOrder+'').padStart(3, '0'))
+                    imgTag.setAttribute('src', data_src);
+                    console.log("Load img {0}/{1}".format(i+1, imageList.length));
+                });
+
+                var lastPageYOffset = window.pageYOffset
+                window.onscroll = function() {
+                    scrolled(); let keepGoing = true;
+                    Array.from(imageList).forEach((elem, i) => {
+                        var imgTag = elem.getElementsByTagName('img')[0];
+                        var sortOrder = imgTag.getAttribute('data-sortOrder');
+                        if (keepGoing && imgTag.offsetTop+imgTag.offsetHeight <= (window.scrollY+(window.innerHeight*2))) {
+                            app.cookie._qwe[app.manhwa].viewed[episode].thumb_img = sortOrder;
+                            if (!imgTag.getAttribute('src')) {
+                                var data_src = '{0}/{1}/{2}/{3}_{4}.jpg'.format(window.location.origin, app.manhwa, (episode+'').padStart(3, '0'), app.epsInfo[episode].episodeTitleHash, (sortOrder+'').padStart(3, '0'))
+                                imgTag.setAttribute('src', data_src);
+                                console.log("Load img {0}/{1}".format(i+1, imageList.length));
+                                keepGoing = false; sleep(50);
+                            }
+                            if (typeof gid('_down').onclick==='function' && i>=imageList.length-4 && window.scrollY>=(document.body.scrollHeight-(window.innerHeight+(window.innerHeight/2)))) {
+                                gid('_down').style = 'display:block;right:{0}px'.format((window.innerWidth-29)/2);
+                            } else {gid('_down').style = 'display:none'}
+                        }
+                    });
+                    app.cookie._qwe[app.manhwa].viewed[episode].scrollY = scrollStart = window.scrollY;
+                    if (Math.abs(window.pageYOffset - lastPageYOffset) >= 100) {
+                        lastPageYOffset = window.pageYOffset;
+                        console.log('update_cookie');
+                        update_cookie();
+                    }
+                }
+
+                setTimeout(function() {
+                    show('layer_2');
+                    scrollStart = app.cookie._qwe[app.manhwa].viewed[episode].scrollY;
+                    lastPageYOffset = scrollStart;
+                    window.scrollTo(0, scrollStart);
+
+                    setTimeout(()=>{scrolledStart = true;}, 666);
+                    // document.querySelector("nav").classList.remove('nav-up');
+                }, 888);
+            }
+
+            var lch = gid("chapterList");
+            if (lch.length>1) {Array.from(lch.options).slice(1).forEach(elem => {elem.remove();})};
+            lch.options[0].selected = true;
+            Object.keys(app.epsInfo).sort().forEach(eps => {
+                var option = document.createElement('option');
+                option.value = eps;
+                option.text = "Chapter {0}".format(eps);
+                option.rel = "nofollow";
+                if (eps == episode) {option.selected = true;}
+                gid("chapterList").add(option);
+
+                // if (user_i[user_i.base].viewed.includes(Number(c).enc())) option.text = "^ {0}".format(option.text);
+            });
+            gid("chapterList").onchange = function() {referer(this.options[this.selectedIndex].value);}
+
+            hide('layer_1'); referer(episode);
+        }
+        const update_cookie = () => {setCookie(app.cookie.qwe, JSON.stringify(app.cookie._qwe), 30);}
+
+
+        var retry = 0;
+        window.start = (function() {
+            if (app.manhwa) {
+                gid('back_l2').onclick = () => {
+                    document.getElementsByName('viewport')[0].content = "width=device-width, initial-scale=1, maximum-scale=1";
+                    hide('layer_2');__main__();
+                }
+                if (!app.cookie._qwe[app.manhwa]) {
+                    app.cookie._qwe[app.manhwa] = {
+                        last_view: null,
+                        viewed: {}
+                    }
+                };
+
+                fetch('{0}/{1}/result.json'.format(window.location.origin, app.manhwa)).then(response => response.json()).then(json => app.epsInfo = json);
+                const get_epsInfo = () => {
+                    retry++;if (retry>99) {return(app.epsInfo);}
+                    if (!app.epsInfo) {setTimeout(function() {get_epsInfo()}, 10);return(app.epsInfo);}
+                    __main__();
+                    if (app.cookie._qwe[app.manhwa].last_view) {
+                        loadContents(app.cookie._qwe[app.manhwa].last_view);
+                    }
+                    return(true);
+                }
+                get_epsInfo();
+            }
+        });
+        window.start();
+    </script>
+</body>
+</html>
