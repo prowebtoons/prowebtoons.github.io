@@ -120,7 +120,7 @@
     }
 
     const onImgError = (img) => {
-        img.setAttribute('src', app.byteImgErr)
+        img.setAttribute('src', '../img/404.jpeg')
         img.setAttribute('ondblclick',"reloadImg(this);");
         img.classList.add('error')
 
@@ -128,11 +128,13 @@
         img.setAttribute('onmouseup', "clearTimeout(timeout_id)");
         img.setAttribute('onmouseleave', "clearTimeout(timeout_id)");
     }
-    const reloadImg = (img) => {
-        img.setAttribute('src', img.getAttribute('data-src') );
-        // console.log("Reload img {0}/{1}".format(img.getAttribute('data-src'), imgs_.length));
-        img.removeAttribute('ondblclick');
-        img.classList.remove('error');
+    const reloadImg=(imgTag)=>{
+        var sortOrder=imgTag.getAttribute('data-sortOrder');
+        var data_src = 'https://raw.githubusercontent.com/prowebtoons-thief/{0}/main/{1}/{2}_{3}.jpg'.format(app.manhwa, (getChapter()+'').padStart(3, '0'), app.epsInfo[getChapter()].episodeTitleHash, (sortOrder+'').padStart(3, '0'))
+        /*imgTag.setAttribute('src',imgTag.getAttribute('data-src'));*/
+        imgTag.setAttribute('src',data_src);
+        imgTag.removeAttribute('ondblclick');
+        imgTag.classList.remove('error');
 
         img.removeAttribute('onmousedown')
         img.removeAttribute('onmouseup')
