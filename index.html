@@ -284,7 +284,7 @@
                     }
                 };
 
-                fetch('{0}/{1}/result.json'.format(window.location.origin, app.manhwa)).then(response => response.json()).then(json => app.epsInfo = json);
+                fetch('https://raw.githubusercontent.com/prowebtoons-thief/{0}/main/dtb.{0}.json'.format(app.manhwa)).then(response => response.json()).then(json => app.epsInfo = json);
                 const get_epsInfo = () => {
                     retry++;if (retry>99) {return(app.epsInfo);}
                     if (!app.epsInfo) {setTimeout(function() {get_epsInfo()}, 10);return(app.epsInfo);}
