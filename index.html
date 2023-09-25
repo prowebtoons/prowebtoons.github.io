@@ -207,7 +207,7 @@
                     var imgTag = elem.getElementsByTagName('img')[0];
                     var sortOrder = imgTag.getAttribute('data-sortOrder');
                     var i = Array.from(imageList).indexOf(elem);
-                    var data_src = '{0}/{1}/{2}/{3}_{4}.jpg'.format(window.location.origin, app.manhwa, (episode+'').padStart(3, '0'), app.epsInfo[episode].episodeTitleHash, (sortOrder+'').padStart(3, '0'))
+                    var data_src = 'https://raw.githubusercontent.com/prowebtoons-thief/{0}/main/{1}/{2}_{3}.jpg'.format(app.manhwa, (episode+'').padStart(3, '0'), app.epsInfo[episode].episodeTitleHash, (sortOrder+'').padStart(3, '0'))
                     imgTag.setAttribute('src', data_src);
                     console.log("Load img {0}/{1}".format(i+1, imageList.length));
                 });
@@ -221,7 +221,7 @@
                         if (keepGoing && imgTag.offsetTop+imgTag.offsetHeight <= (window.scrollY+(window.innerHeight*2))) {
                             app.cookie._qwe[app.manhwa].viewed[episode].thumb_img = sortOrder;
                             if (!imgTag.getAttribute('src')) {
-                                var data_src = '{0}/{1}/{2}/{3}_{4}.jpg'.format(window.location.origin, app.manhwa, (episode+'').padStart(3, '0'), app.epsInfo[episode].episodeTitleHash, (sortOrder+'').padStart(3, '0'))
+                                var data_src = 'https://raw.githubusercontent.com/prowebtoons-thief/{0}/main/{1}/{2}_{3}.jpg'.format(app.manhwa, (episode+'').padStart(3, '0'), app.epsInfo[episode].episodeTitleHash, (sortOrder+'').padStart(3, '0'))
                                 imgTag.setAttribute('src', data_src);
                                 console.log("Load img {0}/{1}".format(i+1, imageList.length));
                                 keepGoing = false; sleep(50);
