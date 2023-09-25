@@ -120,7 +120,7 @@
     }
 
     const onImgError = (img) => {
-        img.setAttribute('src', '../img/404.jpeg')
+        img.setAttribute('src', 'static/img/404.jpeg')
         img.setAttribute('ondblclick',"reloadImg(this);");
         img.classList.add('error')
 
