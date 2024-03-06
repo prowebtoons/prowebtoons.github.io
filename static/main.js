@@ -116,8 +116,8 @@ var App={
 		expires:30,
 		qwe:null
 	},
-	full_data_src:"{0}/{1}.jpg",
-	fui:"https://raw.githubusercontent.com/prowebtoons-thief/{0}/main/{1}.jpg",
+	full_data_src_:"{0}/{1}.jpg",
+	full_data_src:"https://raw.githubusercontent.com/prowebtoons-thief/{0}/main/{1}.jpg",
 	footer:document.querySelector("footer"),
 	lastScrollY:window.pageYOffset,
 	scrolledStart:false
