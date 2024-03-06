@@ -132,11 +132,11 @@ App.onImgError=(imgTag)=>{
 	imgTag.setAttribute("ondblclick","App.reloadImg(this);");
 	imgTag.classList.add("error");
 	onLongPress(imgTag,()=>{
-		var data_src=App.full_data_src.format(App.titleNa,App.getChapter(),parseInt(imgTag.getAttribute("data-sortOrder")));window.open(data_src)
+		var data_src=App.full_data_src.format(App.titleNa,imgTag.getAttribute("data-fName"));window.open(data_src)
 	},5E+3)
 };
 App.reloadImg=(imgTag)=>{
-	var data_src=App.full_data_src.format(App.titleNa,App.getChapter(),parseInt(imgTag.getAttribute("data-sortOrder")));
+	var data_src=App.full_data_src.format(App.titleNa,imgTag.getAttribute("data-fName"));
 	imgTag.setAttribute("src",data_src);
 	imgTag.removeAttribute("ondblclick");
 	imgTag.classList.remove("error")
