@@ -302,8 +302,8 @@ App.init=()=>{
 		App.getcookie();
 
 		var retry=1;
-		fetch("dtb.webtoons.id.{0}.json".format(App.titleNa)).then(response=>response.json()).then(json=>App.epsInfo=json);
-		/* fetch('https://raw.githubusercontent.com/prowebtoons-thief/{0}/main/dtb.{0}.json'.format(App.titleNa)).then(response=>response.json()).then(json=>App.epsInfo=json); */
+		/* fetch("dtb.webtoons.id.{0}.json".format(App.titleNa)).then(response=>response.json()).then(json=>App.epsInfo=json); */
+		fetch('https://raw.githubusercontent.com/prowebtoons-thief/{0}/main/dtb.webtoon.id.{0}.json'.format(App.titleNa)).then(response=>response.json()).then(json=>App.epsInfo=json);
 		const get_epsInfo=()=>{
 			retry++;
 			if(retry>99){window.location.search = "?t=";return(App.epsInfo)};
