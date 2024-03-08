@@ -117,7 +117,7 @@ var App={
 		qwe:null
 	},
 	full_data_src_:"{0}/{1}.jpg",
-	full_data_src:"https://raw.githubusercontent.com/prowebtoons-thief/{0}/main/{1}.jpg",
+	full_data_src:"https://raw.githubusercontent.com/prowebtoons-thief/{0}/main/{1}/{2}.jpg",
 	footer:document.querySelector("footer"),
 	lastScrollY:window.pageYOffset,
 	scrolledStart:false
@@ -132,11 +132,11 @@ App.onImgError=(imgTag)=>{
 	imgTag.setAttribute("ondblclick","App.reloadImg(this);");
 	imgTag.classList.add("error");
 	onLongPress(imgTag,()=>{
-		var data_src=App.full_data_src.format(App.titleNa,imgTag.getAttribute("data-fName"));window.open(data_src)
+		var data_src=App.full_data_src.format(App.titleNa,App.getChapter(),imgTag.getAttribute("data-fName"));window.open(data_src)
 	},5E+3)
 };
 App.reloadImg=(imgTag)=>{
-	var data_src=App.full_data_src.format(App.titleNa,imgTag.getAttribute("data-fName"));
+	var data_src=App.full_data_src.format(App.titleNa,App.getChapter(),imgTag.getAttribute("data-fName"));
 	imgTag.setAttribute("src",data_src);
 	imgTag.removeAttribute("ondblclick");
 	imgTag.classList.remove("error")
@@ -200,7 +200,7 @@ App.setImage=(index)=>{
 		var sortOrder = imgTag.getAttribute("data-sortOrder"),
 		fName = imgTag.getAttribute("data-fName"),
 		isrc = imgTag.getAttribute("src"),
-		data_src = App.full_data_src.format(App.titleNa, fName);
+		data_src = App.full_data_src.format(App.titleNa, App.getChapter(), fName);
 
 		if (isrc&&isrc!==data_src&&window.scrollY>=imgTag.offsetTop&&window.scrollY<=imgTag.offsetTop+imgTag.offsetHeight) {App.reloadImg(imgTag)}
 		else if (!isrc) {imgTag.setAttribute("src",data_src)};
