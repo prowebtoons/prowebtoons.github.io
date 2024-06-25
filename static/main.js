@@ -158,7 +158,7 @@ App.description=()=>{
 	var div=document.createElement("div"),ul=document.createElement("ul");
 	ul.setAttribute("id","bxcl");
 
-	Object.keys(App.epsInfo.epsInfo).reverse().forEach(eps=>{
+	Object.keys(App.epsInfo.epsInfo).sort().forEach(eps=>{
 		var li=document.createElement("li"),div=document.createElement("div");
 		div.setAttribute("class","bxch");
 		if(App.cookie.qwe.viewed&&App.cookie.qwe.viewed.includes(eps)){div.classList.add("viewed")};
@@ -322,7 +322,7 @@ App.init=()=>{
 			var lch=$("epsisodeList");
 			if(lch.length>1){Array.from(lch.options).slice(1).forEach(elem=>{elem.remove()})};
 			lch.options[0].selected = true;
-			Object.keys(App.epsInfo.epsInfo).reverse().forEach(eps=>{
+			Object.keys(App.epsInfo.epsInfo).sort().forEach(eps=>{
 				var option=document.createElement("option");
 				option.value=eps;
 				option.text=App.epsInfo["epsInfo"][eps].title;
