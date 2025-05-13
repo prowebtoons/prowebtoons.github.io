@@ -1,0 +1,195 @@
+@media (prefers-reduced-motion: no-preference) {
+    :root {
+        scroll-behavior: smooth;
+    }
+}
+:root {
+    --bs-blue: #0d6efd;
+    --bs-indigo: #6610f2;
+    --bs-purple: #6f42c1;
+    --bs-pink: #d63384;
+    --bs-red: #dc3545;
+    --bs-orange: #fd7e14;
+    --bs-yellow: #ffc107;
+    --bs-green: #198754;
+    --bs-teal: #20c997;
+    --bs-cyan: #0dcaf0;
+    --bs-white: #fff;
+    --bs-gray: #6c757d;
+    --bs-gray-dark: #343a40;
+    --bs-gray-100: #f8f9fa;
+    --bs-gray-200: #e9ecef;
+    --bs-gray-300: #dee2e6;
+    --bs-gray-400: #ced4da;
+    --bs-gray-500: #adb5bd;
+    --bs-gray-600: #6c757d;
+    --bs-gray-700: #495057;
+    --bs-gray-800: #343a40;
+    --bs-gray-900: #212529;
+    --bs-primary: #167990;
+    --bs-secondary: #6c757d;
+    --bs-success: #198754;
+    --bs-info: #6f42c1;
+    --bs-warning: #ffc107;
+    --bs-danger: #dc3545;
+    --bs-light: #f8f9fa;
+    --bs-dark: #212529;
+    --bs-primary-rgb: 22, 121, 144;
+    --bs-secondary-rgb: 108, 117, 125;
+    --bs-success-rgb: 25, 135, 84;
+    --bs-info-rgb: 111, 66, 193;
+    --bs-warning-rgb: 255, 193, 7;
+    --bs-danger-rgb: 220, 53, 69;
+    --bs-light-rgb: 248, 249, 250;
+    --bs-dark-rgb: 33, 37, 41;
+    --bs-white-rgb: 255, 255, 255;
+    --bs-black-rgb: 0, 0, 0;
+    --bs-body-color-rgb: 51, 51, 51;
+    --bs-body-bg-rgb: 236, 240, 242;
+    --bs-font-sans-serif: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    --bs-font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    --bs-gradient: linear-gradient(180deg, rgba(255,255,255,0.15), rgba(255,255,255,0));
+    --bs-body-font-family: var(--bs-font-sans-serif);
+    --bs-body-font-size: 1rem;
+    --bs-body-font-weight: 400;
+    --bs-body-line-height: 1.5;
+    --bs-body-color: #333;
+    --bs-body-bg: #ecf0f2;
+}
+
+html, body {
+    min-height: 100%;
+    height: 100%;
+}
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+user agent stylesheet
+:root {
+    view-transition-name: root;
+}
+user agent stylesheet
+html {
+    display: block;
+}
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+
+
+#dashboard {
+    padding: 18px 0;
+}
+
+.info {
+    padding: 27px 18px;
+    display: inline-block;
+    z-index: 20;
+}
+.info .genre {font-size: 12px;font-weight: 400}
+.genre.g_fantasy {color: #8b00e9}
+.genre.g_action {color: #006afa}
+.genre.g_drama {color: #00b19a}
+.genre.g_romance,.genre.g_romance_m,.genre.g_romantis {color: #fd337f}
+.genre.g_comedy {color: #eea800}
+.genre.g_sports {color: #1ba8f2}
+.genre.g_sf {color: #2d4464}
+.genre.g_thriller {color: #c00355}
+.genre.g_slice_of_life {color: #9ab710}
+.genre.g_historical {color: #62422b}
+.genre.g_heartwarming {color: #fd6900}
+.genre.g_horror {color: #be0000}
+.genre.g_super_hero {color: #4a20e2}.genre.g_tiptoon {color: #ff76cd}
+.genre.g_short_story {color: #609bfc}
+.genre.g_web_novel {color: #3393c6}
+.genre.g_supernatural {color: #7a41e9}
+.genre.g_crime_mystery,.genre.g_mystery {color: #434458}
+.genre.g_romantic_fantasy {color: #d216e9}
+.genre.g_bl_gl {color: #ee82ff}
+.genre.g_western_palace {color: #d216e9}
+.genre.g_eastern_palace {color: #63422b}
+.genre.g_time_slip {color: #6550fb}
+.genre.g_city_office {color: #37308c}
+.genre.g_adaptation {color: #00c855}
+.genre.g_school {color: #da8754}
+.genre.g_local {color: #25ef92}
+.genre.g_shonen {color: #2961b0}
+.genre.g_martial_arts {color: #905125}
+.genre.g_all,.genre.g_others {color: #373737}
+.info .title {
+    color: #fff;
+    font-size: 21px;
+    font-weight: 600;
+    line-height: 27px;
+    margin: 4px auto 0;
+    border-bottom: 1px solid #afafaf
+}
+.info p.summary {
+    margin: 9px 0;
+    font-size: 12px;
+    line-height: 16px
+}
+
+.detail_lst {
+    position: absolute;
+    left: 0;
+    right: 0;
+    min-height: 742px;
+    padding: 18px 9px 98px;
+    background: #353746
+}
+li, ol, ul {list-style: none}
+a, a:active, a:focus, a:hover {text-decoration: none}
+.detail_lst li {position: relative;border-bottom: 1px solid #afafaf}
+.detail_lst li:first-child {border-top: 1px solid #afafaf}
+.detail_lst li:hover {background: #1f2029}
+.detail_lst li>div {
+    height: 48px;
+    display: block;
+    white-space: nowrap;
+    cursor: pointer
+}
+.detail_lst li>div.visited {opacity: .5}
+.detail_lst li>div:hover{opacity: 1}
+.detail_lst .chtitle {
+    position: absolute;
+    top: 6px;
+    left: 6px;
+    right: 63px;
+
+    overflow: hidden;
+    font-size: 16px;
+    font-weight: 700;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    background: linear-gradient(60deg, #f79533, #f37055, #ef4e7b, #a166ab, #5073b8, #1098ad, #07b39b, #6fba82);
+    background-size: 300% 300%;
+    animation: animatedgradient 10s ease alternate infinite;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.detail_lst .date {
+    position: absolute;
+    bottom: 6px;
+    left: 6px;
+    font-size: 12px;
+}
+.detail_lst .tx {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    bottom: 6px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    color: #dadada;
+    font-size: 16px;
+    font-weight: 200;
+}

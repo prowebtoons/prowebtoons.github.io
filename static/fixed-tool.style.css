@@ -1,0 +1,226 @@
+@font-face{font-family:FontAwesome;src:url(./fontawesome-webfont.ttf) format('truetype')}
+
+#fixed-tool {
+    --black-light: #424455;
+    --width: 36px;
+    --height: var(--width);
+    --font-size: 18px;
+    --translate: calc(var(--width) / 4 * 3);
+    --bg-color-lg: linear-gradient(60deg, #f79533, #f37055, #ef4e7b, #a166ab, #5073b8, #1098ad, #07b39b, #6fba82);
+    --bg-size: 300% 300%;
+    --animation: animatedgradient 10s ease alternate infinite;
+}
+
+#fixed-tool #progress{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 0.25em;
+    background: var(--black-light);
+    z-index: 10000;
+}
+#fixed-tool #progress-bar{
+    position: relative;
+    left: 0;
+    width: 0%;
+    height: 100%;
+    float: left;
+    background: var(--bg-color-lg);
+    background-size: var(--bg-size);
+    animation: var(--animation);
+    -webkit-transition: all 360ms linear;
+    transition: all 360ms linear;
+}
+
+#fixed-tool #popleft {
+    position: fixed;
+    top: calc(var(--width) / 2);
+    left: calc(var(--width) / 2);
+}
+#fixed-tool #popleft #btn-audio,
+#fixed-tool #popleft #list-Episode {
+    width: var(--width);
+    height: var(--height);
+    margin: 0 2px;
+
+    font-weight: normal;
+    font-size: var(--font-size);
+    cursor: pointer;
+    border-radius: 50%;
+    background: var(--black-light);
+    z-index: 10000;
+    opacity: 0;
+    visibility: hidden;
+    /*transform: translate(calc(-1 * var(--translate)), calc(-1 * var(--translate)));*/
+    transform: translateX(calc(-1 * var(--translate)));
+    -webkit-transition: all 360ms linear;
+    transition: all 360ms linear;
+}
+#fixed-tool #popleft #btn-audio {
+    transform: translateX(calc(var(--translate)));
+}
+#fixed-tool #popleft #btn-audio:after,
+#fixed-tool #popleft #list-Episode:after {
+    content: '\f00b';
+    text-align: center;
+    font-family: "FontAwesome";
+    line-height: var(--height);
+
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: var(--width);
+    height: var(--height);
+    z-index: 1;
+    inset: 0;
+    background: var(--bg-color-lg);
+    background-size: var(--bg-size);
+    animation: var(--animation);
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+#fixed-tool #popleft #btn-audio:after {content:"\f028"}
+#fixed-tool #popleft #btn-audio.off:after {content:"\f026"}
+
+#fixed-tool #btn-scroll {
+    position: fixed;
+    top: calc(var(--width) / 2);
+    right: calc(var(--width) / 2);
+}
+#fixed-tool #btn-scroll #to-Top,
+#fixed-tool #btn-scroll #to-Down {
+    width: var(--width);
+    height: var(--height);
+    margin: 2px 0;
+
+    font-weight: normal;
+    font-size: var(--font-size);
+    cursor: pointer;
+    border-radius: 50%;
+    background: var(--black-light);
+    z-index: 10000;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(calc(-1 * var(--translate)));
+    -webkit-transition: all 360ms linear;
+    transition: all 360ms linear;
+}
+#fixed-tool #btn-scroll #to-Down {transform: translateY(var(--translate))}
+#fixed-tool #btn-scroll #to-Top:after,
+#fixed-tool #btn-scroll #to-Down:after {
+    content: '\f062';
+    text-align: center;
+    font-family: "FontAwesome";
+    line-height: var(--height);
+
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: var(--width);
+    height: var(--height);
+    z-index: 1;
+    inset: 0;
+    background: var(--bg-color-lg);
+    background-size: var(--bg-size);
+    animation: var(--animation);
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+#fixed-tool #btn-scroll #to-Down:after {content: '\f063'}
+
+#fixed-tool #footer-bar {
+    position: fixed;
+    right: calc(var(--width) / 2);
+    left: calc(var(--width) / 2);
+    bottom: calc(var(--width) / 2);
+}
+#fixed-tool #footer-bar #to-Prev,
+#fixed-tool #footer-bar #to-Next {
+    width: var(--width);
+    height: var(--height);
+    margin: 0 2px;
+
+    font-weight: normal;
+    font-size: var(--font-size);
+    cursor: pointer;
+    border-radius: 50%;
+    background: var(--black-light);
+    z-index: 10000;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(calc(-1 * var(--translate)));
+    -webkit-transition: all 360ms linear;
+    transition: all 360ms linear;
+}
+#fixed-tool #footer-bar #to-Next {
+    float: right;
+    transform: translateX(var(--translate));
+}
+#fixed-tool #footer-bar #to-Prev:after,
+#fixed-tool #footer-bar #to-Next:after {
+    content: '\f060';
+    text-align: center;
+    font-family: "FontAwesome";
+    line-height: var(--height);
+
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: var(--width);
+    height: var(--height);
+    z-index: 1;
+    inset: 0;
+    background: var(--bg-color-lg);
+    background-size: var(--bg-size);
+    animation: var(--animation);
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+#fixed-tool #footer-bar #to-Next:after {content: '\f061'}
+
+#fixed-tool #footer-bar #opt-Episode {
+    width: 100%;
+    line-height: var(--height);
+    padding: 0 9px;
+
+    display: block;
+    color: #6fba82;
+    font-size: var(--font-size);
+    font-weight: 360;
+    cursor: pointer;
+    border-radius: 25px;
+    background: var(--black-light);
+    z-index: 10000;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(var(--translate));
+    -webkit-transition: all 360ms linear;
+    transition: all 360ms linear;
+    -webkit-appearance: none;
+}
+#fixed-tool #footer-bar #opt-Episode option {
+    padding: 9px;
+    color: #07b39b;
+    font-weight: 360;
+}
+
+#fixed-tool #popleft #list-Episode.active,
+#fixed-tool #popleft #btn-audio.active,
+#fixed-tool #btn-scroll #to-Top.active,
+#fixed-tool #btn-scroll #to-Down.active,
+#fixed-tool #footer-bar #to-Prev.active,
+#fixed-tool #footer-bar #to-Next.active,
+#fixed-tool #footer-bar #opt-Episode.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(0, 0);
+}
+
+@keyframes animatedgradient{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}

@@ -1,0 +1,118 @@
+#sortalist {
+   	position: absolute;
+    left: 0;
+    right: 0;
+    margin: 27px 9px 98px;
+    padding: 18px;
+    background: #353746
+}
+#sortalist .series:before {content: '✧ ';color: #999999}
+#sortalist .series:hover:before {content: '✦ ';color: #0F0}
+#sortalist .series {
+	color: #CCC;
+	font-size: 16px;
+	line-height: 26px;
+}
+
+#sortalist .series:hover {color: #FFFFFF}
+#sortalist .series:after {color: #F00}
+#sortalist .series.s1:after  {content: ' ¹';}
+#sortalist .series.s2:after  {content: ' ²';}
+#sortalist .series.s3:after  {content: ' ³';}
+#sortalist .series.s4:after  {content: ' ⁴';}
+#sortalist .series.s5:after  {content: ' ⁵';}
+#sortalist .series.s6:after  {content: ' ⁶';}
+#sortalist .series.s7:after  {content: ' ⁷';}
+#sortalist .series.s8:after  {content: ' ⁸';}
+#sortalist .series.s9:after  {content: ' ⁹';}
+#sortalist .series.s10:after {content: ' ¹⁰';}
+#sortalist .series.s11:after {content: ' ¹¹';}
+#sortalist .series.s12:after {content: ' ¹²';}
+#sortalist .series.s13:after {content: ' ¹³';}
+#sortalist .series.s14:after {content: ' ¹⁴';}
+#sortalist .series.s15:after {content: ' ¹⁵';}
+#sortalist .series.s16:after {content: ' ¹⁶';}
+#sortalist .series.s17:after {content: ' ¹⁷';}
+#sortalist .series.s18:after {content: ' ¹⁸';}
+#sortalist .series.s19:after {content: ' ¹⁹';}
+#sortalist .series.s20:after {content: ' ²⁰';}
+#sortalist .series.s21:after {content: ' ²¹';}
+#sortalist .series.s22:after {content: ' ²²';}
+#sortalist .series.s23:after {content: ' ²³';}
+#sortalist .series.s24:after {content: ' ²⁴';}
+#sortalist .series.s25:after {content: ' ²⁵';}
+#sortalist .series.s26:after {content: ' ²⁶';}
+#sortalist .series.s27:after {content: ' ²⁷';}
+#sortalist .series.s28:after {content: ' ²⁸';}
+#sortalist .series.s29:after {content: ' ²⁹';}
+#sortalist .series.s30:after {content: ' ³⁰';}
+#sortalist .series.s31:after {content: ' ³¹';}
+#sortalist .series.s32:after {content: ' ³²';}
+#sortalist .series.s33:after {content: ' ³³';}
+#sortalist .series.s34:after {content: ' ³⁴';}
+#sortalist .series.s35:after {content: ' ³⁵';}
+#sortalist .series.s36:after {content: ' ³⁶';}
+#sortalist .series.s37:after {content: ' ³⁷';}
+#sortalist .series.s38:after {content: ' ³⁸';}
+#sortalist .series.s39:after {content: ' ³⁹';}
+#sortalist .series.s40:after {content: ' ⁴⁰';}
+#sortalist .series.s41:after {content: ' ⁴¹';}
+#sortalist .series.s42:after {content: ' ⁴²';}
+#sortalist .series.s43:after {content: ' ⁴³';}
+#sortalist .series.s44:after {content: ' ⁴⁴';}
+#sortalist .series.s45:after {content: ' ⁴⁵';}
+#sortalist .series.s46:after {content: ' ⁴⁶';}
+#sortalist .series.s47:after {content: ' ⁴⁷';}
+#sortalist .series.s48:after {content: ' ⁴⁸';}
+#sortalist .series.s49:after {content: ' ⁴⁹';}
+#sortalist .series.s50:after {content: ' ⁵⁰';}
+#sortalist .series.s51:after {content: ' ⁵¹';}
+#sortalist .series.s52:after {content: ' ⁵²';}
+#sortalist .series.s53:after {content: ' ⁵³';}
+#sortalist .series.s54:after {content: ' ⁵⁴';}
+#sortalist .series.s55:after {content: ' ⁵⁵';}
+#sortalist .series.s56:after {content: ' ⁵⁶';}
+#sortalist .series.s57:after {content: ' ⁵⁷';}
+#sortalist .series.s58:after {content: ' ⁵⁸';}
+#sortalist .series.s59:after {content: ' ⁵⁹';}
+#sortalist .series.s60:after {content: ' ⁶⁰';}
+#sortalist .series.s61:after {content: ' ⁶¹';}
+#sortalist .series.s62:after {content: ' ⁶²';}
+#sortalist .series.s63:after {content: ' ⁶³';}
+#sortalist .series.s64:after {content: ' ⁶⁴';}
+#sortalist .series.s65:after {content: ' ⁶⁵';}
+#sortalist .series.s66:after {content: ' ⁶⁶';}
+#sortalist .series.s67:after {content: ' ⁶⁷';}
+#sortalist .series.s68:after {content: ' ⁶⁸';}
+#sortalist .series.s69:after {content: ' ⁶⁹';}
+#sortalist .series.s70:after {content: ' ⁷⁰';}
+#sortalist .series.s71:after {content: ' ⁷¹';}
+#sortalist .series.s72:after {content: ' ⁷²';}
+#sortalist .series.s73:after {content: ' ⁷³';}
+#sortalist .series.s74:after {content: ' ⁷⁴';}
+#sortalist .series.s75:after {content: ' ⁷⁵';}
+#sortalist .series.s76:after {content: ' ⁷⁶';}
+#sortalist .series.s77:after {content: ' ⁷⁷';}
+#sortalist .series.s78:after {content: ' ⁷⁸';}
+#sortalist .series.s79:after {content: ' ⁷⁹';}
+#sortalist .series.s80:after {content: ' ⁸⁰';}
+#sortalist .series.s81:after {content: ' ⁸¹';}
+#sortalist .series.s82:after {content: ' ⁸²';}
+#sortalist .series.s83:after {content: ' ⁸³';}
+#sortalist .series.s84:after {content: ' ⁸⁴';}
+#sortalist .series.s85:after {content: ' ⁸⁵';}
+#sortalist .series.s86:after {content: ' ⁸⁶';}
+#sortalist .series.s87:after {content: ' ⁸⁷';}
+#sortalist .series.s88:after {content: ' ⁸⁸';}
+#sortalist .series.s89:after {content: ' ⁸⁹';}
+#sortalist .series.s90:after {content: ' ⁹⁰';}
+#sortalist .series.s91:after {content: ' ⁹¹';}
+#sortalist .series.s92:after {content: ' ⁹²';}
+#sortalist .series.s93:after {content: ' ⁹³';}
+#sortalist .series.s94:after {content: ' ⁹⁴';}
+#sortalist .series.s95:after {content: ' ⁹⁵';}
+#sortalist .series.s96:after {content: ' ⁹⁶';}
+#sortalist .series.s97:after {content: ' ⁹⁷';}
+#sortalist .series.s98:after {content: ' ⁹⁸';}
+#sortalist .series.s99:after {content: ' ⁹⁹';}
+#sortalist .series.s_:after {content: ' ^';}
