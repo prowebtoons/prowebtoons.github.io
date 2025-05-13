@@ -1,7 +1,86 @@
 <!DOCTYPE html>
 <html onmousedown="return true" ondragstart="return false" oncontextmenu="return false;">
-<head></head>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title></title>
+    <meta http-equiv="expires" content="-1">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+    <meta name="description" content="Read Manhwa">
+    <meta name="chapter" content="">
+    <link href="./static/icon.png" rel="icon" type="image/png">
+    <link rel="stylesheet" type="text/css" href="./static/basic-style.css">
+    <link rel="stylesheet" type="text/css" href="./static/fixed-tool.style.css">
+    <link rel="stylesheet" type="text/css" href="./static/sortalist.style.css">
+    <link rel="stylesheet" type="text/css" href="./static/dashboard.style.css">
+    <script type="text/javascript" src="./static/basic-script.js"></script>
+</head>
 <body>
-<script src="static/main.js"></script>
+    <section id="content" style="width:100%;height:100vh;">
+        <audio id="player" preload="auto" autoplay playsinline loop></audio>
+        <section id="fixed-tool" style="display:none;">
+            <div id="progress"><div id="progress-bar"></div></div>
+
+            <div id="popleft">
+                <table>
+                    <tr>
+                        <th><div id="list-Episode" onclick="MCT_ProWebtoons.setDashboard()"></div></th>
+                        <th><div id="btn-audio"></div></th>
+                    </tr>
+                </table>
+            </div>
+
+            <div id="btn-scroll">
+                <table>
+                    <tr><th><div id="to-Top"></div></th></tr>
+                    <tr><th><div id="to-Down"></div></th></tr>
+                </table>
+            </div>
+
+            <div id="footer-bar">
+                <table width="100%">
+                    <tr>
+                        <th width="1"><div id="to-Prev"></div></th>
+                        <th><select id="opt-Episode">
+                            <option style="color:#6fba82" disabled selected>Select Chapter</option>
+                        </select></th>
+                        <th width="1"><div id="to-Next"></div></th>
+                    </tr>
+                </table>
+            </div>
+        </section>
+
+        <section id="sortalist" style="display:none">
+            <!-- <ul>
+                <li><a class="series" href="?a-child-who-looks-like-me">A Child Who Looks Like Me</a></li>
+                <li><a class="series" href="?reality-quest">Reality Quest</a></li>
+            </ul> -->
+        </section>
+
+        <section id="dashboard" style="display:none">
+            <div class="info">
+                <h2 class="genre"></h2>
+                <h1 class="title"></h1>
+                <p class="summary"></p>
+            </div>
+
+            <div class="detail_lst">
+                <!-- <ul id="_listUl">
+                    <li>
+                       <div class="visited">
+                           <span class="chtitle">EPISODE 26</span>
+                           <span class="date">23 Sep 2024</span>
+                           <span class="tx">#123</span>
+                       </div> 
+                    </li>
+                </ul> -->
+            </div>
+        </section>
+
+        <center><ul id="imageList"></ul></center>
+    </section>
+
+    <script src="./static/utils-script.js"></script>
 </body>
-</html>	
+</html>
