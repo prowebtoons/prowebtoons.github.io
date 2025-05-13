@@ -117,7 +117,7 @@ var App={
 		qwe:null
 	},
 	full_data_src_:"{0}/{1}.jpg",
-	full_data_src:"https://raw.githubusercontent.com/prowebtoons-thief/{0}/main/{1}/{2}.jpg",
+	full_data_src:"https://raw.githubusercontent.com/prowebtoons/webtoons/main/{0}/{1}.jpg",
 	footer:document.querySelector("footer"),
 	lastScrollY:window.pageYOffset,
 	scrolledStart:false
@@ -303,7 +303,7 @@ App.init=()=>{
 
 		var retry=1;
 		/* fetch("dtb.webtoons.id.{0}.json".format(App.titleNa)).then(response=>response.json()).then(json=>App.epsInfo=json); */
-		fetch('https://raw.githubusercontent.com/prowebtoons-thief/{0}/main/dtb.webtoon.id.{0}.json'.format(App.titleNa)).then(response=>response.json()).then(json=>App.epsInfo=json);
+		fetch('https://raw.githubusercontent.com/prowebtoons/webtoons/main/id.{0}.json'.format(App.titleNa)).then(response=>response.json()).then(json=>App.epsInfo=json);
 		const get_epsInfo=()=>{
 			retry++;
 			if(retry>999){window.location.search = "?t=";return(App.epsInfo)};
