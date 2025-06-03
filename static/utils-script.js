@@ -11,7 +11,8 @@ const MCT_ProWebtoons = {
     },
 
     // full_data_src:"https://raw.githubusercontent.com/prowebtoons/webtoons/main/{0}/{1}/{2}.jpg",
-    full_data_src:"https://raw.githubusercontent.com/prowebtoons/webtoons/refs/heads/main/{0}/{1}/{2}.jpg",
+    // full_data_src:"https://raw.githubusercontent.com/prowebtoons/webtoons/refs/heads/main/{0}/{1}/{2}.jpg",
+    full_data_src:"https://raw.githubusercontent.com/prowebtoons/{0}/refs/heads/main/{1}/{2}.jpg",
     // full_data_src:"contents/{0}/{1}/{2}.jpg",
     lastScrollY:window.pageYOffset,
     scrolledStart:false,
