@@ -161,7 +161,7 @@ MCT_ProWebtoons.setDashboard=function(){
         a.attr("onclick", `MCT_ProWebtoons.referer("${eps}")`);
 
         a.append($("<span>").addClass('chtitle').html(this.epsInfo.episodeList[eps].episodeName||`Chapter ${eps}`).e)
-        a.append($("<span>").addClass('date').html(new Date(this.epsInfo.episodeList[eps].presentYmdt *1E3||new Date().getTime()).toDateString()).e)
+        a.append($("<span>").addClass('date').html(new Date(this.epsInfo.episodeList[eps].presentYmdt||new Date().getTime()).toDateString()).e)
         a.append($("<span>").addClass('tx').html(`#${parseInt(eps)}`).e)
         ul.append($("<li>").attr("data-episode-no", parseInt(eps)).append(a.e).e)
     });
