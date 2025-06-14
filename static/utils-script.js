@@ -92,7 +92,7 @@ const MCT_ProWebtoons = {
             this.client.last_view = localStorage[`last_view.${this.title}`]||'';
 
             // $.view_ajax(`./manhwa/git_dtb.webtoon.id.${this.title}.json`).then(manhwa => {
-            $.view_ajax(`https://raw.githubusercontent.com/prowebtoons/webtoons/refs/heads/main/id.${this.title}.json`).then(manhwa => {
+            $.view_ajax(`https://raw.githubusercontent.com/prowebtoons/${this.title}/refs/heads/main/id.${this.title}.json`).then(manhwa => {
                 this.epsInfo = manhwa;
 
                 this.opt_episode.on("change", function(){
