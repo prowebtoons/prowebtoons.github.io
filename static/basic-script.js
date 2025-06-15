@@ -32,3 +32,32 @@ $.view_ajax=(url)=>{return new Promise((resolve,reject)=>{fetch(url).then(respon
 
 var mouseTimer=null,cursorVisible=true;document.onmousemove=()=>{if(mouseTimer){window.clearTimeout(mouseTimer)}if(!cursorVisible){document.documentElement.style.cursor="default";cursorVisible=true}mouseTimer=window.setTimeout(()=>{mouseTimer=null;document.documentElement.style.cursor="none";cursorVisible=false},3E3)};
 // document.onkeydown=(e)=>{if(e.ctrlKey&&e.shiftKey&&["C","J","I"].includes(e.key.toUpperCase())){return false}if(e.ctrlKey&&["C","S","U"].includes(e.key.toUpperCase())){return false}};
+
+const Firebase=(title, dataname, users)=>{
+    const firebaseConfig = {
+        apiKey: "AIzaSyDMiO0chCHHPFRAjDdqhcvYAYyhvatWPgc",
+        authDomain: "webtoon-reader-15191.firebaseapp.com",
+        projectId: "webtoon-reader-15191",
+        storageBucket: "webtoon-reader-15191.firebasestorage.app",
+        messagingSenderId: "906980261628",
+        appId: "1:906980261628:web:743a99babb58d10a6b2179",
+        measurementId: "G-RPCM7MKJBJ"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+
+    if (dataname){
+        const episodeDocRef = db.collection('views').doc(title);
+        db.runTransaction(transaction => 
+            transaction.get(episodeDocRef).then(doc => {
+                const newViewCount = (doc.exists ? (doc.data()?.[dataname] || 0) : 0) + 1;
+                doc.exists?transaction.update(episodeDocRef, {[dataname]: newViewCount}):transaction.set(episodeDocRef, {[dataname]: newViewCount});
+                return newViewCount;
+            })
+        ).then(finalCount => {
+            console.log("Jumlah pembaca berhasil diperbarui menjadi:", finalCount);
+        }).catch(error => {console.error("Error updating view count: ", error)});
+    }
+    if(users)fetch('https://api.ipgeolocation.io/v2/ipgeo?apiKey=680a1baad37d4b08b694de099b1cb1c1').then(r=>r.ok?r.json():Promise.reject(`HTTP error! status: ${r.status}`)).then(jdata=>{usersDocRef=db.collection('users').doc('data');db.runTransaction(transaction=>transaction.get(usersDocRef).then(doc=>{transaction.set(usersDocRef,{[new Date().getTime()]:jdata})}))})
+}
