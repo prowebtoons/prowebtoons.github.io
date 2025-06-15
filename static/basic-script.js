@@ -33,20 +33,20 @@ $.view_ajax=(url)=>{return new Promise((resolve,reject)=>{fetch(url).then(respon
 var mouseTimer=null,cursorVisible=true;document.onmousemove=()=>{if(mouseTimer){window.clearTimeout(mouseTimer)}if(!cursorVisible){document.documentElement.style.cursor="default";cursorVisible=true}mouseTimer=window.setTimeout(()=>{mouseTimer=null;document.documentElement.style.cursor="none";cursorVisible=false},3E3)};
 // document.onkeydown=(e)=>{if(e.ctrlKey&&e.shiftKey&&["C","J","I"].includes(e.key.toUpperCase())){return false}if(e.ctrlKey&&["C","S","U"].includes(e.key.toUpperCase())){return false}};
 
+
+const firebaseConfig = {
+    apiKey: "AIzaSyDMiO0chCHHPFRAjDdqhcvYAYyhvatWPgc",
+    authDomain: "webtoon-reader-15191.firebaseapp.com",
+    projectId: "webtoon-reader-15191",
+    storageBucket: "webtoon-reader-15191.firebasestorage.app",
+    messagingSenderId: "906980261628",
+    appId: "1:906980261628:web:743a99babb58d10a6b2179",
+    measurementId: "G-RPCM7MKJBJ"
+};
+
+firebase.initializeApp(firebaseConfig);
+const db = firebase.firestore();
 const Firebase=(title, dataname, users)=>{
-    const firebaseConfig = {
-        apiKey: "AIzaSyDMiO0chCHHPFRAjDdqhcvYAYyhvatWPgc",
-        authDomain: "webtoon-reader-15191.firebaseapp.com",
-        projectId: "webtoon-reader-15191",
-        storageBucket: "webtoon-reader-15191.firebasestorage.app",
-        messagingSenderId: "906980261628",
-        appId: "1:906980261628:web:743a99babb58d10a6b2179",
-        measurementId: "G-RPCM7MKJBJ"
-    };
-
-    firebase.initializeApp(firebaseConfig);
-    const db = firebase.firestore();
-
     if (dataname){
         const episodeDocRef = db.collection('views').doc(title);
         db.runTransaction(transaction => 
