@@ -48,7 +48,7 @@ firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
 const Firebase=(title, dataname, users)=>{
     if (dataname){
-        dataname = "views-episode_${dataname}"
+        dataname = `views-episode_${dataname}`
         const episodeDocRef = db.collection('views').doc(title);
         db.runTransaction(transaction => 
             transaction.get(episodeDocRef).then(doc => {
