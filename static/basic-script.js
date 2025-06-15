@@ -60,5 +60,5 @@ const Firebase=(title, dataname, users)=>{
             console.log("Jumlah pembaca berhasil diperbarui menjadi:", finalCount);
         }).catch(error => {console.error("Error updating view count: ", error)});
     }
-    if(users)fetch('https://api.ipgeolocation.io/v2/ipgeo?apiKey=680a1baad37d4b08b694de099b1cb1c1').then(r=>r.ok?r.json():Promise.reject(`HTTP error! status: ${r.status}`)).then(jdata=>{usersDocRef=db.collection('users').doc('data');db.runTransaction(transaction=>transaction.get(usersDocRef).then(doc=>{transaction.set(usersDocRef,{[new Date().getTime()]:jdata})}))})
+    if(users)fetch('https://api.ipgeolocation.io/v2/ipgeo?apiKey=680a1baad37d4b08b694de099b1cb1c1').then(r=>r.ok?r.json():Promise.reject(`HTTP error! status: ${r.status}`)).then(jdata=>{usersDocRef=db.collection('users').doc('data');db.runTransaction(transaction=>transaction.get(usersDocRef).then(doc=>{transaction.update(usersDocRef,{[new Date().getTime()]:jdata})}))})
 }
